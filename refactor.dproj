@@ -109,6 +109,8 @@
         <DCCReference Include="model\components\connections\refactor.model.components.connections.interfaces.pas"/>
         <DCCReference Include="model\components\connections\refactor.model.components.connections.firedac.pas"/>
         <DCCReference Include="model\DAO\refactor.model.DAO.interfaces.pas"/>
+        <DCCReference Include="model\entity\refactor.model.entity.user.pas"/>
+        <DCCReference Include="model\DAO\refactor.model.DAO.user.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

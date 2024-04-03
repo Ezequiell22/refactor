@@ -8,7 +8,9 @@ uses
   refactor.model.behaviors in 'model\behaviors\refactor.model.behaviors.pas',
   refactor.model.components.connections.interfaces in 'model\components\connections\refactor.model.components.connections.interfaces.pas',
   refactor.model.components.connections.firedac in 'model\components\connections\refactor.model.components.connections.firedac.pas',
-  refactor.model.DAO.interfaces in 'model\DAO\refactor.model.DAO.interfaces.pas';
+  refactor.model.DAO.interfaces in 'model\DAO\refactor.model.DAO.interfaces.pas',
+  refactor.model.entity.user in 'model\entity\refactor.model.entity.user.pas',
+  refactor.model.DAO.user in 'model\DAO\refactor.model.DAO.user.pas';
 
 {$R *.res}
 

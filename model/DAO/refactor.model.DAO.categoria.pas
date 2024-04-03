@@ -18,6 +18,7 @@ type
   public
     constructor Create;
     destructor Destroy; override;
+    class function New : iModelDAOEntity<TCategoria>;
     function Delete: iModelDAOEntity<TCategoria>;
     function DataSet(AValue: TDataSource): iModelDAOEntity<TCategoria>;
     function Get: iModelDAOEntity<TCategoria>;
@@ -92,6 +93,11 @@ begin
       raise Exception.Create(E.message);
 
   end;
+end;
+
+class function TModelDaoCategoria.New: iModelDAOEntity<TCategoria>;
+begin
+   result := Self.Create;
 end;
 
 function TModelDaoCategoria.This: TCategoria;

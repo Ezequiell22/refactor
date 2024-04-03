@@ -1,0 +1,7 @@
+unit refactor.model.DAO.user;
+
+interface
+
+implementation
+
+end.

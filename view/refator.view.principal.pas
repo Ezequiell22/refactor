@@ -82,7 +82,7 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
 
-  FDAO := TModelDaoCategoria.Create.DataSet(DataSource1)
+  FDAO := TModelDaoCategoria.New.DataSet(DataSource1)
 end;
 
 end.
