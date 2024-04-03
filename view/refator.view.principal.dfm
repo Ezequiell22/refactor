@@ -11,7 +11,6 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
-  OnClose = FormClose
   OnCreate = FormCreate
   TextHeight = 13
   object Label1: TLabel
@@ -92,22 +91,7 @@ object Form1: TForm1
     TabOrder = 6
   end
   object DataSource1: TDataSource
-    Left = 608
-    Top = 24
-  end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'Database=refactor'
-      'User_Name=postgres'
-      'Password=root'
-      'DriverID=PG')
-    LoginPrompt = False
-    Left = 240
-    Top = 136
-  end
-  object FDPhysPgDriverLink1: TFDPhysPgDriverLink
-    VendorHome = 'C:\repositorios\REFACTOR\Win32\Debug'
-    Left = 240
-    Top = 192
+    Left = 504
+    Top = 128
   end
 end

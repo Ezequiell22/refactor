@@ -3,61 +3,52 @@ unit refactor.model.DAO.categoria;
 interface
 
 uses Data.DB,
-  fireDac.comp.Client,
-  fireDac.dapt,
-  fireDac.Stan.Param,
-  refactor.model.entity.categoria;
+  refactor.model.entity.categoria,
+  refactor.model.components.connections.interfaces,
+  System.SysUtils,
+  refactor.model.components.connections.firedac,
+  refactor.model.DAO.interfaces;
 
 type
-  TModelDaoCategoria = class
+  TModelDaoCategoria = class(TInterfacedObject, iModelDAOEntity<TCategoria>)
   private
-    FFDConnection: TFDConnection;
-    FFDQuery: TFDQuery;
+    FConnection: iModelComponentsConnections;
     FDataSource: TDataSource;
     FEntity: TCategoria;
   public
-    constructor Create(aConnection: TFDConnection);
+    constructor Create;
     destructor Destroy; override;
-    function Get: TModelDaoCategoria;
-    function Insert: TModelDaoCategoria;
-    function Update: TModelDaoCategoria;
-    function Delete: TModelDaoCategoria;
-    function DataSet(AValue: TDataSource): TModelDaoCategoria;
+    function Delete: iModelDAOEntity<TCategoria>;
+    function DataSet(AValue: TDataSource): iModelDAOEntity<TCategoria>;
+    function Get: iModelDAOEntity<TCategoria>;
+    function Insert: iModelDAOEntity<TCategoria>;
     function This: TCategoria;
+    function Update: iModelDAOEntity<TCategoria>;
   end;
 
 implementation
 
-uses
-  System.SysUtils;
-
 { TModelDaoCategoria }
 
-constructor TModelDaoCategoria.Create(aConnection: TFDConnection);
+constructor TModelDaoCategoria.Create;
 begin
-  FFDConnection := aConnection;
-  FFDQuery := TFDQuery.Create(nil);
-  FFDQuery.Connection := FFDConnection;
+  FConnection := TModelCompnentsConnectionsFiredac.New;
   FEntity := TCategoria.Create;
 end;
 
-function TModelDaoCategoria.DataSet(AValue: TDataSource): TModelDaoCategoria;
+function TModelDaoCategoria.DataSet(AValue: TDataSource): iModelDAOEntity<TCategoria>;
 begin
   result := self;
   FDataSource := AValue;
-  FDataSource.DataSet := FFDQuery;
+  FDataSource.DataSet := FConnection.DataSet;
 end;
 
-function TModelDaoCategoria.Delete: TModelDaoCategoria;
+function TModelDaoCategoria.Delete: iModelDAOEntity<TCategoria>;
 begin
   result := self;
   try
-    FFDQuery.Active := False;
-    FFDQuery.sql.Clear;
-    FFDQuery.sql.add('delete from categoria ');
-    FFDQuery.sql.add(' where id = :id');
-    FFDQuery.ParamByName('id').Value := FEntity.ID;
-    FFDQuery.ExecSql;
+    FConnection.active(false).sqlClear.sqlAdd('delete from categoria ')
+      .sqlAdd(' where id = :id').addParam('id', FEntity.ID).execSql
   except
     on E: Exception do
       raise Exception.Create(E.message);
@@ -67,20 +58,18 @@ end;
 
 destructor TModelDaoCategoria.Destroy;
 begin
-  FFDQuery.FREE;
+
   FEntity.FREE;
   inherited;
 end;
 
-function TModelDaoCategoria.Get: TModelDaoCategoria;
+function TModelDaoCategoria.Get: iModelDAOEntity<TCategoria>;
 begin
   result := self;
   try
-    FFDQuery.Active := False;
-    FFDQuery.sql.Clear;
-    FFDQuery.sql.add('select * from categoria ');
-    FFDQuery.Open;
-    FFDQuery.Active := True;
+
+    FConnection.active(false).sqlClear.sqlAdd('select * from categoria ').Open
+
   except
     on E: Exception do
       raise Exception.Create(E.message);
@@ -88,17 +77,16 @@ begin
   end;
 end;
 
-function TModelDaoCategoria.Insert: TModelDaoCategoria;
+function TModelDaoCategoria.Insert: iModelDAOEntity<TCategoria>;
 begin
   result := self;
   try
-    FFDQuery.Active := False;
-    FFDQuery.sql.Clear;
-    FFDQuery.sql.add('insert into categoria( id, descricao )');
-    FFDQuery.sql.add('values ( :id, :descricao )');
-    FFDQuery.ParamByName('id').Value := FEntity.ID;
-    FFDQuery.ParamByName('descricao').Value := FEntity.Descricao;
-    FFDQuery.ExecSql;
+
+    FConnection.active(false).sqlClear.sqlAdd
+      ('insert into categoria( id, descricao )')
+      .sqlAdd('values ( :id, :descricao )').addParam('id', FEntity.ID)
+      .addParam('descricao', FEntity.Descricao).execSql
+
   except
     on E: Exception do
       raise Exception.Create(E.message);
@@ -111,18 +99,16 @@ begin
   result := FEntity;
 end;
 
-function TModelDaoCategoria.Update: TModelDaoCategoria;
+function TModelDaoCategoria.Update: iModelDAOEntity<TCategoria>;
 begin
   result := self;
   try
-    FFDQuery.Active := False;
-    FFDQuery.sql.Clear;
-    FFDQuery.sql.add('update categoria set descricao ');
-    FFDQuery.sql.add(' = :descricao ');
-    FFDQuery.sql.add(' where id = :id');
-    FFDQuery.ParamByName('id').Value := FEntity.ID;
-    FFDQuery.ParamByName('descricao').Value := FEntity.Descricao;
-    FFDQuery.ExecSql;
+
+    FConnection.active(false).sqlClear.sqlAdd('update categoria set descricao ')
+      .sqlAdd(' = :descricao ').sqlAdd(' where id = :id')
+      .addParam('id', FEntity.ID).addParam('descricao',
+      FEntity.Descricao).execSql
+
   except
     on E: Exception do
       raise Exception.Create(E.message);

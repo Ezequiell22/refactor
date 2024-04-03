@@ -1,0 +1,79 @@
+unit refactor.model.components.connections.firedac;
+
+interface
+
+uses refactor.model.components.connections.interfaces;
+
+type
+
+  TModelCompnentsConnectionsFiredac = class(TInterfacedObject,
+    iModelComponentsConnections)
+  private
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: iModelComponentsConnections;
+    function active(aValue: boolean): iModelComponentsConnections;
+    function addParam(aParam: string; aValue: Variant)
+      : iModelComponentsConnections;
+    function execSql: iModelComponentsConnections;
+    function open: iModelComponentsConnections;
+    function sqlClear: iModelComponentsConnections;
+    function sqlAdd(aValue: string): iModelComponentsConnections;
+
+  end;
+
+implementation
+
+{ TModelCompnentsConnectionsFiredac }
+
+function TModelCompnentsConnectionsFiredac.active(
+  aValue: boolean): iModelComponentsConnections;
+begin
+
+end;
+
+function TModelCompnentsConnectionsFiredac.addParam(aParam: string;
+  aValue: Variant): iModelComponentsConnections;
+begin
+
+end;
+
+constructor TModelCompnentsConnectionsFiredac.Create;
+begin
+
+end;
+
+destructor TModelCompnentsConnectionsFiredac.Destroy;
+begin
+
+  inherited;
+end;
+
+function TModelCompnentsConnectionsFiredac.execSql: iModelComponentsConnections;
+begin
+
+end;
+
+class function TModelCompnentsConnectionsFiredac.New: iModelComponentsConnections;
+begin
+
+end;
+
+function TModelCompnentsConnectionsFiredac.open: iModelComponentsConnections;
+begin
+
+end;
+
+function TModelCompnentsConnectionsFiredac.sqlAdd(
+  aValue: string): iModelComponentsConnections;
+begin
+
+end;
+
+function TModelCompnentsConnectionsFiredac.sqlClear: iModelComponentsConnections;
+begin
+
+end;
+
+end.

@@ -106,6 +106,9 @@
         <DCCReference Include="model\entity\refactor.model.entity.categoria.pas"/>
         <DCCReference Include="model\DAO\refactor.model.DAO.categoria.pas"/>
         <DCCReference Include="model\behaviors\refactor.model.behaviors.pas"/>
+        <DCCReference Include="model\components\connections\refactor.model.components.connections.interfaces.pas"/>
+        <DCCReference Include="model\components\connections\refactor.model.components.connections.firedac.pas"/>
+        <DCCReference Include="model\DAO\refactor.model.DAO.interfaces.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

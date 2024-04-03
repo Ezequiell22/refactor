@@ -1,0 +1,19 @@
+unit refactor.model.DAO.interfaces;
+
+interface
+
+type
+  iModelDAOEntity = interface
+    ['{20C172F2-01EA-4515-93CD-1740F4767933}']
+    function Delete: TModelDaoCategoria;
+    function DataSet(AValue: TDataSource): TModelDaoCategoria;
+    function Get: TModelDaoCategoria;
+    function Insert: TModelDaoCategoria;
+    function This: TCategoria;
+    function Update: TModelDaoCategoria;
+
+  end;
+
+implementation
+
+end.

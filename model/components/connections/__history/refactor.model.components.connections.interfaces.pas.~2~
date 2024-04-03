@@ -1,0 +1,17 @@
+unit refactor.model.components.connections.interfaces;
+
+interface
+type
+  TModelComponentsConnections = interface
+    ['{813098B1-470E-441C-B244-06361BB4AFF3}']
+    function active(aValue : boolean) : TModelComponentsConnections;
+    function sqlClear : TModelComponentsConnections;
+    function sqlAdd(aValue : string) : TModelComponentsConnections;
+    function addParam ( aParam : string; aValue : Variant ) : TModelComponentsConnections;
+    function execSql : TModelComponentsConnections;
+    function open : TModelComponentsConnections;
+  end;
+
+implementation
+
+end.

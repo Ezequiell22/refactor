@@ -12,5 +12,11 @@
     <Transaction>2024/04/02 16:09:27.000.887,C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\model\DAO\refactor.model.DAO.categoria.pas=C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\model\DAO\refactor.models.DAO.categoria.pas</Transaction>
     <Transaction>2024/04/03 10:33:42.978,=C:\repositorios\REFACTOR\Unit1.pas</Transaction>
     <Transaction>2024/04/03 10:34:03.306,C:\repositorios\REFACTOR\model\behaviors\refactor.model.behaviors.pas=C:\repositorios\REFACTOR\Unit1.pas</Transaction>
+    <Transaction>2024/04/03 10:50:12.005,=C:\repositorios\REFACTOR\Unit1.pas</Transaction>
+    <Transaction>2024/04/03 10:51:18.813,C:\repositorios\REFACTOR\model\components\connections\refactor.model.components.connections.interfaces.pas=C:\repositorios\REFACTOR\Unit1.pas</Transaction>
+    <Transaction>2024/04/03 10:57:22.118,=C:\repositorios\REFACTOR\Unit1.pas</Transaction>
+    <Transaction>2024/04/03 10:57:38.586,C:\repositorios\REFACTOR\model\components\connections\refactor.model.components.connections.firedac.pas=C:\repositorios\REFACTOR\Unit1.pas</Transaction>
+    <Transaction>2024/04/03 18:35:32.579,=C:\repositorios\REFACTOR\Unit1.pas</Transaction>
+    <Transaction>2024/04/03 18:35:57.591,C:\repositorios\REFACTOR\model\DAO\refactor.model.DAO.interfaces.pas=C:\repositorios\REFACTOR\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

@@ -1,0 +1,118 @@
+unit refactor.model.DAO.categoria;
+
+interface
+
+uses Data.DB,
+  refactor.model.entity.categoria,
+  refactor.model.components.connections.interfaces,
+  System.SysUtils,
+  refactor.model.components.connections.firedac;
+
+type
+  TModelDaoCategoria = class
+  private
+    FConnection: iModelComponentsConnections;
+    FDataSource: TDataSource;
+    FEntity: TCategoria;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    function Delete: TModelDaoCategoria;
+    function DataSet(AValue: TDataSource): TModelDaoCategoria;
+    function Get: TModelDaoCategoria;
+    function Insert: TModelDaoCategoria;
+    function Update: TModelDaoCategoria;
+    function This: TCategoria;
+  end;
+
+implementation
+
+{ TModelDaoCategoria }
+
+constructor TModelDaoCategoria.Create;
+begin
+  FConnection := TModelCompnentsConnectionsFiredac.New;
+  FEntity := TCategoria.Create;
+end;
+
+function TModelDaoCategoria.DataSet(AValue: TDataSource): TModelDaoCategoria;
+begin
+  result := self;
+  FDataSource := AValue;
+  FDataSource.DataSet := FConnection.DataSet;
+end;
+
+function TModelDaoCategoria.Delete: TModelDaoCategoria;
+begin
+  result := self;
+  try
+    FConnection.active(false).sqlClear.sqlAdd('delete from categoria ')
+      .sqlAdd(' where id = :id').addParam('id', FEntity.ID).execSql
+  except
+    on E: Exception do
+      raise Exception.Create(E.message);
+
+  end;
+end;
+
+destructor TModelDaoCategoria.Destroy;
+begin
+
+  FEntity.FREE;
+  inherited;
+end;
+
+function TModelDaoCategoria.Get: TModelDaoCategoria;
+begin
+  result := self;
+  try
+
+    FConnection.active(false).sqlClear.sqlAdd('select * from categoria ').Open
+
+  except
+    on E: Exception do
+      raise Exception.Create(E.message);
+
+  end;
+end;
+
+function TModelDaoCategoria.Insert: TModelDaoCategoria;
+begin
+  result := self;
+  try
+
+    FConnection.active(false).sqlClear.sqlAdd
+      ('insert into categoria( id, descricao )')
+      .sqlAdd('values ( :id, :descricao )').addParam('id', FEntity.ID)
+      .addParam('descricao', FEntity.Descricao).execSql
+
+  except
+    on E: Exception do
+      raise Exception.Create(E.message);
+
+  end;
+end;
+
+function TModelDaoCategoria.This: TCategoria;
+begin
+  result := FEntity;
+end;
+
+function TModelDaoCategoria.Update: TModelDaoCategoria;
+begin
+  result := self;
+  try
+
+    FConnection.active(false).sqlClear.sqlAdd('update categoria set descricao ')
+      .sqlAdd(' = :descricao ').sqlAdd(' where id = :id')
+      .addParam('id', FEntity.ID).addParam('descricao',
+      FEntity.Descricao).execSql
+
+  except
+    on E: Exception do
+      raise Exception.Create(E.message);
+
+  end;
+end;
+
+end.

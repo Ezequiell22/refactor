@@ -3,13 +3,22 @@ unit refator.view.principal;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, refactor.model.DAO.categoria, Data.DB,
-  Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
-  FireDAC.Comp.Client, FireDAC.Phys.PG, FireDAC.Phys.PGDef;
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  refactor.model.DAO.categoria,
+  Data.DB,
+  Vcl.StdCtrls,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  refactor.model.DAO.interfaces,
+  refactor.model.entity.categoria;
 
 type
   TForm1 = class(TForm)
@@ -23,17 +32,14 @@ type
     edt_id: TEdit;
     edt_descricao: TEdit;
     DataSource1: TDataSource;
-    FDConnection1: TFDConnection;
-    FDPhysPgDriverLink1: TFDPhysPgDriverLink;
     procedure FormCreate(Sender: TObject);
     procedure bt_listarClick(Sender: TObject);
     procedure bt_inserirClick(Sender: TObject);
     procedure bt_updateClick(Sender: TObject);
     procedure bt_deletarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
-    FDAO: TModelDaoCategoria;
+    FDAO: iModelDAOEntity<TCategoria>;
   public
     { Public declarations }
   end;
@@ -73,18 +79,10 @@ begin
   FDAO.Get;
 end;
 
-procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-
-   FDAO.Free;
-end;
-
 procedure TForm1.FormCreate(Sender: TObject);
 begin
 
-  FDPhysPgDriverLink1.VendorHome := './';
-  ReportMemoryLeaksOnShutdown := true;
-  FDAO := TModelDaoCategoria.Create(FDConnection1).DataSet(DataSource1)
+  FDAO := TModelDaoCategoria.Create.DataSet(DataSource1)
 end;
 
 end.

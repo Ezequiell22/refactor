@@ -1,0 +1,7 @@
+unit refactor.model.components.connections.interfaces;
+
+interface
+
+implementation
+
+end.

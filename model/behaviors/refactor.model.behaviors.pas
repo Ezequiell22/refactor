@@ -4,7 +4,9 @@ interface
 
 uses
   System.SysUtils,
-  vcl.Forms;
+  vcl.Forms,
+  vcl.Dialogs,
+  System.UITypes;
 
 type
   TModelBehaviors = class
@@ -12,17 +14,12 @@ type
     procedure behaviorsException(Sender: TObject; E: Exception);
   public
     constructor create;
-    destructor destroy; override;
-
   end;
 
 var
   modelBehaviors: TModelBehaviors;
 
 implementation
-
-uses
-  vcl.Dialogs;
 
 { TModelBehaviors }
 
@@ -33,13 +30,8 @@ end;
 
 constructor TModelBehaviors.create;
 begin
+  ReportMemoryLeaksOnShutdown := true;
   Application.OnException := behaviorsException;
-end;
-
-destructor TModelBehaviors.destroy;
-begin
-
-  inherited;
 end;
 
 initialization
