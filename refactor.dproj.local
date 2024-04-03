@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/04/02 15:52:49.000.404,=C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 15:53:54.000.299,C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\view\refator.view.principal.dfm=C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2024/04/02 15:53:54.000.299,C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\view\refator.view.principal.pas=C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 15:54:11.000.807,C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\refactor.dproj=C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2024/04/02 15:58:25.000.271,=C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 15:59:48.000.277,C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\model\entity\refactor.model.entity.categoria.pas=C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 16:07:49.000.125,=C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 16:09:01.000.742,C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\model\DAO\refactor.models.DAO.categoria.pas=C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\Unit1.pas</Transaction>
+    <Transaction>2024/04/02 16:09:27.000.887,C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\model\DAO\refactor.model.DAO.categoria.pas=C:\Users\PROG-MTEK\Documents\Embarcadero\Studio\Projects\exemploRefatorando\src\model\DAO\refactor.models.DAO.categoria.pas</Transaction>
+    <Transaction>2024/04/03 10:33:42.978,=C:\repositorios\REFACTOR\Unit1.pas</Transaction>
+    <Transaction>2024/04/03 10:34:03.306,C:\repositorios\REFACTOR\model\behaviors\refactor.model.behaviors.pas=C:\repositorios\REFACTOR\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
