@@ -2,18 +2,24 @@ unit refactor.model.entity.categoria;
 
 interface
 
+uses
+  refactor.model.DAO.interfaces;
+
 type
   TCategoria = class
   private
+    [weak]
+    FParent: iModelDAOEntity<TCategoria>;
     FDescricao: string;
     FID: INTEGER;
-    function getDescricao: string;
-    function getId: INTEGER;
   public
-    constructor Create;
+    constructor Create(aParent: iModelDAOEntity<TCategoria>);
     destructor Destroy; override;
-    property ID : integer read getId write FId;
-    property Descricao : string read getDescricao write FDescricao;
+    function id(aValue: INTEGER): TCategoria; overload;
+    function id: INTEGER; overload;
+    function Descricao(aValue: string): TCategoria; overload;
+    function Descricao: string; overload;
+    function &End: iModelDAOEntity<TCategoria>;
   end;
 
 implementation
@@ -23,9 +29,28 @@ uses
 
 { TCategoria }
 
-constructor TCategoria.Create;
+function TCategoria.&End: iModelDAOEntity<TCategoria>;
 begin
+  result := FParent;
+end;
 
+constructor TCategoria.Create(aParent: iModelDAOEntity<TCategoria>);
+begin
+  FParent := aParent;
+end;
+
+function TCategoria.Descricao(aValue: string): TCategoria;
+begin
+  result := self;
+  FDescricao := aValue;
+end;
+
+function TCategoria.Descricao: string;
+begin
+  if Trim(FDescricao) = '' then
+    raise Exception.Create('Descrição vazia');
+
+  result := FDescricao;
 end;
 
 destructor TCategoria.Destroy;
@@ -34,20 +59,15 @@ begin
   inherited;
 end;
 
-function TCategoria.getDescricao: string;
+function TCategoria.id(aValue: INTEGER): TCategoria;
 begin
-
-  if Trim(FDescricao) = '' then
-    raise Exception.Create('Descrição vazia');
-
-  result := FDescricao;
+  result := self;
+  FID := aValue;
 end;
 
-function TCategoria.getId: INTEGER;
+function TCategoria.id: INTEGER;
 begin
-
   result := FID;
-
 end;
 
 end.

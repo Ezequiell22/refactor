@@ -10,7 +10,11 @@ uses
   refactor.model.components.connections.firedac in 'model\components\connections\refactor.model.components.connections.firedac.pas',
   refactor.model.DAO.interfaces in 'model\DAO\refactor.model.DAO.interfaces.pas',
   refactor.model.entity.user in 'model\entity\refactor.model.entity.user.pas',
-  refactor.model.DAO.user in 'model\DAO\refactor.model.DAO.user.pas';
+  refactor.model.DAO.user in 'model\DAO\refactor.model.DAO.user.pas',
+  refactor.controller.interfaces in 'controller\refactor.controller.interfaces.pas',
+  refactor.controller in 'controller\refactor.controller.pas',
+  refactor.controller.entity in 'controller\refactor.controller.entity.pas',
+  refactor.controller.service in 'controller\refactor.controller.service.pas';
 
 {$R *.res}
 

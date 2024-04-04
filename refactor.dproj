@@ -111,6 +111,10 @@
         <DCCReference Include="model\DAO\refactor.model.DAO.interfaces.pas"/>
         <DCCReference Include="model\entity\refactor.model.entity.user.pas"/>
         <DCCReference Include="model\DAO\refactor.model.DAO.user.pas"/>
+        <DCCReference Include="controller\refactor.controller.interfaces.pas"/>
+        <DCCReference Include="controller\refactor.controller.pas"/>
+        <DCCReference Include="controller\refactor.controller.entity.pas"/>
+        <DCCReference Include="controller\refactor.controller.service.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

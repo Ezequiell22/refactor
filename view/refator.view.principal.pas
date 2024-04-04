@@ -12,13 +12,11 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
-  refactor.model.DAO.categoria,
   Data.DB,
   Vcl.StdCtrls,
   Vcl.Grids,
   Vcl.DBGrids,
-  refactor.model.DAO.interfaces,
-  refactor.model.entity.categoria;
+  refactor.controller.interfaces;
 
 type
   TForm1 = class(TForm)
@@ -39,7 +37,7 @@ type
     procedure bt_deletarClick(Sender: TObject);
   private
     { Private declarations }
-    FDAO: iModelDAOEntity<TCategoria>;
+    Fcontroller: iController;
   public
     { Public declarations }
   end;
@@ -49,40 +47,54 @@ var
 
 implementation
 
+uses
+  refactor.controller;
+
 {$R *.dfm}
 
 procedure TForm1.bt_deletarClick(Sender: TObject);
 begin
-  FDAO.This.ID := DataSource1.DataSet.FieldByName('id').AsInteger;
-  FDAO.Delete;
-  FDAO.Get;
+  Fcontroller
+    .entity
+      .categoria
+        .This
+          .ID(DataSource1.DataSet.FieldByName('id').AsInteger)
+        .&End
+      .Delete
+      .Get;
 end;
 
 procedure TForm1.bt_inserirClick(Sender: TObject);
 begin
-  FDAO.This.ID := strToint(edt_id.Text);
-  FDAO.This.Descricao := edt_descricao.Text;
-  FDAO.Insert;
-  FDAO.Get;
+  Fcontroller
+  .entity
+  .categoria.This.ID(strToint(edt_id.Text))
+    .Descricao(edt_descricao.Text).&End.Insert.Get;
 end;
 
 procedure TForm1.bt_listarClick(Sender: TObject);
 begin
-  FDAO.Get;
+  Fcontroller.entity.categoria.Get;
 end;
 
 procedure TForm1.bt_updateClick(Sender: TObject);
 begin
-  FDAO.This.ID := DataSource1.DataSet.FieldByName('id').AsInteger;
-  FDAO.This.Descricao := edt_descricao.Text;
-  FDAO.Update;
-  FDAO.Get;
+  Fcontroller
+    .entity
+      .categoria
+        .This
+          .ID(DataSource1.DataSet.FieldByName('id').AsInteger)
+          .Descricao(edt_descricao.Text)
+        .&End
+      .Update
+      .Get;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
 
-  FDAO := TModelDaoCategoria.New.DataSet(DataSource1)
+  Fcontroller := tController.new;
+  Fcontroller.entity.categoria.DataSet(DataSource1)
 end;
 
 end.

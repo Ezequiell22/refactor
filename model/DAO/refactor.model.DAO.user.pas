@@ -35,7 +35,7 @@ uses
 
 constructor TModelDAOUser.create;
 begin
-  FEntity := TUser.create;
+  FEntity := TUser.create(Self);
   FConnection := TModelCompnentsConnectionsFiredac.New;
 end;
 
@@ -50,15 +50,11 @@ function TModelDAOUser.Delete: iModelDAOEntity<TUser>;
 begin
   result := Self;
   try
-    FConnection.active(false)
-      .sqlClear
-      .sqlAdd('delete from usuario ')
-      .sqlAdd(' where id = :id')
-      .addParam('id', FEntity.ID)
-      .execSql
+    FConnection.active(false).sqlClear.sqlAdd('delete from usuario ')
+      .sqlAdd(' where id = :id').addParam('id', FEntity.ID).execSql
   except
     on E: Exception do
-      raise Exception.Create(E.message);
+      raise Exception.create(E.message);
 
   end;
 end;
@@ -76,7 +72,7 @@ begin
     FConnection.active(false).sqlClear.sqlAdd('select * from usuario ').Open
   except
     on E: Exception do
-      raise Exception.Create(E.message);
+      raise Exception.create(E.message);
 
   end;
 end;
@@ -85,17 +81,13 @@ function TModelDAOUser.Insert: iModelDAOEntity<TUser>;
 begin
   result := Self;
   try
-    FConnection.active(false)
-    .sqlClear
-    .sqlAdd('insert into usuario ( id, name )')
-    .sqlAdd('values ( :id, :name )')
-    .addParam('id', FEntity.ID)
-    .addParam('name', FEntity.name)
-    .execSql
+    FConnection.active(false).sqlClear.sqlAdd
+      ('insert into usuario ( id, name )').sqlAdd('values ( :id, :name )')
+      .addParam('id', FEntity.ID).addParam('name', FEntity.name).execSql
 
   except
     on E: Exception do
-      raise Exception.Create(E.message);
+      raise Exception.create(E.message);
 
   end;
 end;
@@ -115,17 +107,13 @@ begin
   result := Self;
   try
 
-    FConnection.active(false)
-    .sqlClear
-    .sqlAdd('update usuario set name = :name ')
-    .sqlAdd(' where id = :id')
-    .addParam('id', FEntity.ID)
-    .addParam('name', FEntity.name)
-    .execSql
+    FConnection.active(false).sqlClear.sqlAdd
+      ('update usuario set name = :name ').sqlAdd(' where id = :id')
+      .addParam('id', FEntity.ID).addParam('name', FEntity.name).execSql
 
   except
     on E: Exception do
-      raise Exception.Create(E.message);
+      raise Exception.create(E.message);
 
   end;
 end;

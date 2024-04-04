@@ -34,7 +34,7 @@ implementation
 constructor TModelDaoCategoria.Create;
 begin
   FConnection := TModelCompnentsConnectionsFiredac.New;
-  FEntity := TCategoria.Create;
+  FEntity := TCategoria.Create(self);
 end;
 
 function TModelDaoCategoria.DataSet(AValue: TDataSource): iModelDAOEntity<TCategoria>;
